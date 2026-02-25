@@ -34,10 +34,10 @@ def signup():
     password = request.form['password']
     phone = request.form['phone']
 
-    connection = pymysql.connect(host='berxhqu0w65dbve1x0kv-mysql.services.clever-cloud.com',
-        user='u8njzekifoc9amwq',
-        password='1WNiDxrCA64SljLTWGaU',
-        database='berxhqu0w65dbve1x0kv')
+    connection = pymysql.connect(host='bqwk0b7cu461ew9ovqkl-mysql.services.clever-cloud.com',
+        user='ulpgf1liw0vy5pnx',
+        password='99ObfO9AQU1U9h89oKaG',
+        database='bqwk0b7cu461ew9ovqkl')
     cursor = connection.cursor()
     cursor.execute(
         'INSERT INTO users(username,email,password,phone) VALUES (%s,%s,%s,%s)',
@@ -56,10 +56,10 @@ def signin():
     email = request.form['email']
     password = request.form['password']
 
-    connection = pymysql.connect(host='berxhqu0w65dbve1x0kv-mysql.services.clever-cloud.com',
-        user='u8njzekifoc9amwq',
-        password='1WNiDxrCA64SljLTWGaU',
-        database='berxhqu0w65dbve1x0kv')
+    connection = pymysql.connect(host='bqwk0b7cu461ew9ovqkl-mysql.services.clever-cloud.com',
+        user='ulpgf1liw0vy5pnx',
+        password='99ObfO9AQU1U9h89oKaG',
+        database='bqwk0b7cu461ew9ovqkl')
     cursor = connection.cursor(pymysql.cursors.DictCursor)
     cursor.execute("SELECT * FROM users WHERE email=%s AND password=%s", (email, password))
     user = cursor.fetchone()
@@ -90,10 +90,10 @@ def add_product():
         photo_url = upload_result.get("secure_url")
 
         # Connect to DB
-        connection = pymysql.connect(host='berxhqu0w65dbve1x0kv-mysql.services.clever-cloud.com',
-        user='u8njzekifoc9amwq',
-        password='1WNiDxrCA64SljLTWGaU',
-        database='berxhqu0w65dbve1x0kv')
+        connection = pymysql.connect(host='bqwk0b7cu461ew9ovqkl-mysql.services.clever-cloud.com',
+        user='ulpgf1liw0vy5pnx',
+        password='99ObfO9AQU1U9h89oKaG',
+        database='bqwk0b7cu461ew9ovqkl')
         cursor = connection.cursor()
         cursor.execute(
             'INSERT INTO product_details (product_name, product_description, product_cost, product_photo) VALUES (%s,%s,%s,%s)',
@@ -113,12 +113,10 @@ def add_product():
 # ---------------------------
 @app.route('/api/get_product_details', methods=['GET'])
 def get_product_details():
-    connection = pymysql.connect(
-        host='berxhqu0w65dbve1x0kv-mysql.services.clever-cloud.com',
-        user='u8njzekifoc9amwq',
-        password='1WNiDxrCA64SljLTWGaU',
-        database='berxhqu0w65dbve1x0kv'
-    )
+    connection = pymysql.connect(host='bqwk0b7cu461ew9ovqkl-mysql.services.clever-cloud.com',
+        user='ulpgf1liw0vy5pnx',
+        password='99ObfO9AQU1U9h89oKaG',
+        database='bqwk0b7cu461ew9ovqkl')
     cursor = connection.cursor(pymysql.cursors.DictCursor)
     cursor.execute('SELECT * FROM product_details')
     product_details = cursor.fetchall()
